@@ -1,0 +1,53 @@
+/// problem 1
+ALGORITHM checkpoint Introduction to Data Structures and Procedural programming
+FUNCTION sumDistinct(set1: ARRAY_OF INTEGER, set2: ARRAY_OF INTEGER) : INTEGER
+VAR
+    sum : INTEGER := 0;
+    i,j : INTEGER;
+    notFound : BOOLEAN;
+BEGIN
+    FOR i FROM 0 TO set1.length DO
+        notFound := true
+        FOR j FROM 0 TO set2.length DO
+            IF (set1[i] = set2[j]) THEN
+                notFound := false
+            END_IF
+        END_FOR
+        sum := sum + set1[i]
+    END_FOR
+    FOR j FROM 0 TO set2.length DO
+        notFound := true
+        FOR i FROM 0 TO set1.length DO
+            IF (set1[i] = set2[j]) THEN
+                notFound := false
+            END_IF
+        END_FOR
+        sum := sum + set1[i]
+    END_FOR
+    RETURN sum ;
+END
+
+
+/// problem 2
+FUNCTION dot_product(v1: ARRAY_OF FLOAT, v2: ARRAY_OF FLOAT) : FLOAT
+VAR
+    ps : FLOAT := 0;
+BEGIN
+    FOR i FROM 0 TO v1.length DO
+        ps := ps + v1[i] * v2[i]
+    END_FOR
+END
+
+VAR
+    n : INTEGER;
+    vector : ARRAY_OF FLOAT
+    vectors : ARRAY_OF vector[n*2]
+BEGIN
+    FOR i FROM 0 TO n*2 DO
+        FOR j FROM i TO n*2 DO
+            IF (dot_product(vectors[i], vectors[j]) = 0) THEN
+                Write(vectors[i], vectors[j], "are orthogonal")
+            END_IF
+        END_FOR
+    END_FOR
+END
